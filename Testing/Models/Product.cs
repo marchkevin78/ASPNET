@@ -10,6 +10,8 @@ namespace Testing.Models
         public Product()
         {
         }
+        
+
         public int ProductID { get; set; }
 
         public string Name { get; set; }
@@ -23,5 +25,7 @@ namespace Testing.Models
         public int StockLevel { get; set; }
 
         public IEnumerable<Category> Categories { get; set; }
+
+        
     }
 }

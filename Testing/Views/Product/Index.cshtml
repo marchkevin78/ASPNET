@@ -6,6 +6,17 @@
     <a href="/Product/InsertProduct/">Create a New Product</a>
 </div>
 
+
+@using (Html.BeginForm("Index", "Product", "Get"))
+{
+<p>
+    Title: <input type="text" name="searchstring"/>
+    <input type="submit" value="Filter" />
+</p>
+}
+
+
+
 <table class="table">
     <tr>
         <th>ID</th>
@@ -29,6 +40,4 @@
 
     }
 </table>
-
-
 

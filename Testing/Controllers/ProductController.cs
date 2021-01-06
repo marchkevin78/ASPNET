@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Testing.Models;
 
+
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Testing.Controllers
@@ -20,11 +21,16 @@ namespace Testing.Controllers
 
 
         // GET: /<controller>/
-        public IActionResult Index()
+        public IActionResult Index(string searchString)
         {
             var products = _repo.GetAllProducts();
 
-            return View(products);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(s => s.Name.Contains(searchString));
+            }
+
+            return View(products.ToList());
         }
 
         public IActionResult ViewProduct(int id)
@@ -73,6 +79,5 @@ namespace Testing.Controllers
 
             return RedirectToAction("Index");
         }
-
     }
 }
