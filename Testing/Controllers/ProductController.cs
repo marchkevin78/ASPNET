@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Testing.Models;
 
 
+
+
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Testing.Controllers
@@ -27,10 +29,10 @@ namespace Testing.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                products = products.Where(s => s.Name.Contains(searchString));
+                products = products.Where(s => s.Name.ToLower().Contains(searchString.ToLower()));
             }
 
-            return View(products.ToList());
+            return View(products);
         }
 
         public IActionResult ViewProduct(int id)
