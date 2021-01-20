@@ -26,6 +26,5 @@ namespace Testing.Models
 
         public IEnumerable<Category> Categories { get; set; }
 
-        
     }
 }

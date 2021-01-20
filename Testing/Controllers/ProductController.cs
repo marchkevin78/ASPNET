@@ -25,6 +25,7 @@ namespace Testing.Controllers
         // GET: /<controller>/
         public IActionResult Index(string searchString)
         {
+
             var products = _repo.GetAllProducts();
 
             if (!String.IsNullOrEmpty(searchString))
@@ -33,6 +34,8 @@ namespace Testing.Controllers
             }
 
             return View(products);
+
+            
         }
 
         public IActionResult ViewProduct(int id)

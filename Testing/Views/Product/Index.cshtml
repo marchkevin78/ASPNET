@@ -1,42 +1,62 @@
 ﻿@model IEnumerable<Product>
 
-<h2>Products</h2>
+<html>
+    <head>
+        <style>
+            div.background {
+                background: url("../Images/backgroundMain.jpg");
+            }
 
-<div style="display: block">
-    <a href="/Product/InsertProduct/">Create a New Product</a>
-</div>
+            div.transbox {
+                background-color: #ffffff;
+                opacity: 1.0;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Products</h2>
+
+            <div style="display: block">
+                <a href="/Product/InsertProduct/">Create a New Product</a>
+            </div>
 
 
-@using (Html.BeginForm("Index", "Product", "Get"))
-{
-    <p>
-        Title: <input type="text" name="searchString" />
-        <input type="submit" value="Filter" />
-    </p>
-}
+            @using (Html.BeginForm("Index", "Product", "Get"))
+            {
+                <p>
+                    Title: <input type="text" name="searchString" />
+                    <input type="submit" value="Filter" />
+                </p>
+            }
 
+        <div class="background">
+            <div class="transbox">
 
+                <table class="table">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Category ID</th>
+                        <th>On Sale</th>
+                        <th>Stock Level</th>
+                    </tr>
 
-<table class="table">
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Category ID</th>
-        <th>On Sale</th>
-        <th>Stock Level</th>
-    </tr>
+                    @foreach (var product in Model)
+                    {
+                        <tr>
+                            <td><a href=/Product/ViewProduct/@product.ProductID>@product.ProductID</a></td>
+                            <td>@product.Name</td>
+                            <td>@product.Price</td>
+                            <td>@product.CategoryID</td>
+                            <td>@product.OnSale</td>
+                            <td>@product.StockLevel</td>
+                        </tr>
 
-    @foreach (var product in Model)
-    {
-        <tr>
-            <td><a href=/Product/ViewProduct/@product.ProductID>@product.ProductID</a></td>
-            <td>@product.Name</td>
-            <td>@product.Price</td>
-            <td>@product.CategoryID</td>
-            <td>@product.OnSale</td>
-            <td>@product.StockLevel</td>
-        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
 
-    }
-</table>
